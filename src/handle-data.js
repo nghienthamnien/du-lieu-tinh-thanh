@@ -4,6 +4,9 @@ async function handleData(data, collection) {
       if (Object.hasOwnProperty.call(data, stt)) {
         const element = data[stt];
         element.code = parseInt(element.code);
+        if (Object.hasOwnProperty.call(element, "parent_code")) {
+          element.parent_code = parseInt(element.parent_code);
+        }
         await collection.insertOne(element);
       }
     }
